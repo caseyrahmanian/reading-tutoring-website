@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Specialist - Science-Based Literacy Tutoring</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo" id="business-name">Reading Specialist</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="#products">Digital Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 id="hero-title">Transform Reading Struggles into Success</h1>
+                <p id="hero-subtitle">Expert literacy tutoring based on the Science of Reading</p>
+                <a href="#contact" class="btn btn-primary">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p id="about-text">I'm a dedicated reading specialist with expertise in helping beginning and struggling readers. My teaching methods align with the latest Science of Reading research, ensuring evidence-based instruction that produces real results.</p>
+                    <div class="credentials">
+                        <h3>My Approach</h3>
+                        <ul id="approach-list">
+                            <li>✓ Science of Reading based instruction</li>
+                            <li>✓ Systematic phonics and decoding</li>
+                            <li>✓ Building strong foundational skills</li>
+                            <li>✓ Individualized learning plans</li>
+                            <li>✓ Proven, research-backed methods</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img id="about-image" src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600" alt="Reading specialist with student">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section bg-light">
+        <div class="container">
+            <h2>Services</h2>
+            <div class="services-grid" id="services-grid">
+                <!-- Services will be loaded from config.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples Section -->
+    <section id="examples" class="section">
+        <div class="container">
+            <h2>Student Success Stories</h2>
+            <div class="examples-grid">
+                <div class="example-card">
+                    <img id="example-image-1" src="https://images.unsplash.com/photo-1516534775068-ba3e7458af70?w=600" alt="Student learning">
+                    <h3 id="example-title-1">Phonics Mastery</h3>
+                    <p id="example-desc-1">See how systematic phonics instruction helps students decode new words with confidence.</p>
+                </div>
+                <div class="example-card">
+                    <img id="example-image-2" src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600" alt="Reading practice">
+                    <h3 id="example-title-2">Reading Fluency</h3>
+                    <p id="example-desc-2">Watch students progress from struggling to fluent reading through evidence-based practice.</p>
+                </div>
+                <div class="example-card video-card">
+                    <div class="video-placeholder" id="video-placeholder-1">
+                        <p>📹 Video example will appear here</p>
+                        <small id="video-note-1">Add your YouTube or Vimeo embed code via the admin panel</small>
+                    </div>
+                    <h3 id="example-title-3">Interactive Lessons</h3>
+                    <p id="example-desc-3">Experience engaging, multisensory reading instruction in action.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Products Section -->
+    <section id="products" class="section bg-light">
+        <div class="container">
+            <h2>Digital Products</h2>
+            <p class="section-subtitle">Evidence-based resources for parents and educators</p>
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be loaded from config.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Get Started with Tutoring</h2>
+            <p class="section-subtitle">Ready to help your child succeed? Let's connect!</p>
+            <div class="contact-content">
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="student-info">Student Information (age, grade, needs) *</label>
+                        <textarea id="student-info" name="student-info" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Additional Information</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <p class="form-note">* Required fields</p>
+                </form>
+                <div class="contact-info">
+                    <h3>Why Choose Science of Reading?</h3>
+                    <p>The Science of Reading is a comprehensive body of research that shows how children learn to read and what instruction works best. My methods are proven to help:</p>
+                    <ul>
+                        <li>Struggling readers catch up to grade level</li>
+                        <li>Beginning readers build strong foundations</li>
+                        <li>Students with dyslexia overcome challenges</li>
+                        <li>All learners develop a love of reading</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> <span id="footer-business-name">Reading Specialist</span>. All rights reserved.</p>
+            <p>Evidence-based literacy instruction | Science of Reading aligned</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

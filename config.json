@@ -1,0 +1,57 @@
+{
+  "businessName": "Reading Specialist",
+  "hero": {
+    "title": "Transform Reading Struggles into Success",
+    "subtitle": "Expert literacy tutoring based on the Science of Reading"
+  },
+  "about": {
+    "text": "I'm a dedicated reading specialist with expertise in helping beginning and struggling readers. My teaching methods align with the latest Science of Reading research, ensuring evidence-based instruction that produces real results.",
+    "imageUrl": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600"
+  },
+  "services": [
+    {
+      "icon": "📚",
+      "title": "One-on-One Tutoring",
+      "description": "Personalized instruction tailored to your child's specific needs and learning style."
+    },
+    {
+      "icon": "🎯",
+      "title": "Assessment & Planning",
+      "description": "Comprehensive reading assessments to identify strengths and create targeted learning plans."
+    },
+    {
+      "icon": "✏️",
+      "title": "Writing Instruction",
+      "description": "Evidence-based writing instruction that builds composition skills alongside reading."
+    },
+    {
+      "icon": "👥",
+      "title": "Parent Coaching",
+      "description": "Guidance and strategies for parents to support reading development at home."
+    }
+  ],
+  "products": [
+    {
+      "title": "Phonics Activity Pack",
+      "description": "Complete set of systematic phonics activities aligned with Science of Reading principles.",
+      "price": "$29.99",
+      "imageUrl": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400",
+      "purchaseUrl": "https://gumroad.com/your-product-link"
+    },
+    {
+      "title": "Decodable Reader Set",
+      "description": "Carefully sequenced decodable books for beginning readers.",
+      "price": "$39.99",
+      "imageUrl": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400",
+      "purchaseUrl": "https://gumroad.com/your-product-link"
+    },
+    {
+      "title": "Reading Assessment Kit",
+      "description": "Professional assessment tools for tracking reading progress.",
+      "price": "$49.99",
+      "imageUrl": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400",
+      "purchaseUrl": "https://gumroad.com/your-product-link"
+    }
+  ],
+  "contactEmail": "your-email@example.com"
+}

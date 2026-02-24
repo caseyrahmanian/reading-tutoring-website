@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Website Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #4A90E2;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="url"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #f9f9f9;
+        }
+
+        .card h3 {
+            color: #4A90E2;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #4A90E2;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #357ABD;
+        }
+
+        .btn-success {
+            background: #50C878;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #45B368;
+        }
+
+        .btn-danger {
+            background: #FF6B6B;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #E85555;
+        }
+
+        .btn-secondary {
+            background: #666;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #555;
+        }
+
+        .actions {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #eee;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .service-item, .product-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .service-item button, .product-item button {
+            flex-shrink: 0;
+        }
+
+        .help-text {
+            font-size: 13px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+
+        .instructions {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .instructions h3 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .instructions ol, .instructions ul {
+            margin-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <h1>🎛️ Website Admin Panel</h1>
+        <p class="subtitle">Manage your website content easily - no coding required!</p>
+
+        <div class="instructions">
+            <h3>How to Use This Admin Panel</h3>
+            <ol>
+                <li>Edit the content below to customize your website</li>
+                <li>Click "Generate Updated Config" when done</li>
+                <li>Copy the generated JSON code</li>
+                <li>Replace the contents of <code>config.json</code> with the new code</li>
+                <li>Save and commit your changes to GitHub</li>
+            </ol>
+        </div>
+
+        <form id="admin-form">
+            <!-- Basic Information -->
+            <div class="section">
+                <h2>Basic Information</h2>
+                <div class="form-group">
+                    <label for="businessName">Business Name</label>
+                    <input type="text" id="businessName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Contact Email</label>
+                    <input type="email" id="contactEmail" required>
+                    <p class="help-text">This email will be used for the contact form</p>
+                </div>
+            </div>
+
+            <!-- Hero Section -->
+            <div class="section">
+                <h2>Hero Section (Top Banner)</h2>
+                <div class="form-group">
+                    <label for="heroTitle">Hero Title</label>
+                    <input type="text" id="heroTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="heroSubtitle">Hero Subtitle</label>
+                    <input type="text" id="heroSubtitle" required>
+                </div>
+            </div>
+
+            <!-- About Section -->
+            <div class="section">
+                <h2>About Section</h2>
+                <div class="form-group">
+                    <label for="aboutText">About Text</label>
+                    <textarea id="aboutText" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="aboutImageUrl">About Image URL</label>
+                    <input type="url" id="aboutImageUrl">
+                    <p class="help-text">Use Unsplash, Pexels, or upload to your GitHub repo</p>
+                </div>
+            </div>
+
+            <!-- Services Section -->
+            <div class="section">
+                <h2>Services</h2>
+                <div id="services-container"></div>
+                <button type="button" class="btn btn-secondary" onclick="addService()">+ Add Service</button>
+            </div>
+
+            <!-- Products Section -->
+            <div class="section">
+                <h2>Digital Products</h2>
+                <div id="products-container"></div>
+                <button type="button" class="btn btn-secondary" onclick="addProduct()">+ Add Product</button>
+            </div>
+
+            <!-- Actions -->
+            <div class="actions">
+                <button type="button" class="btn btn-success" onclick="generateConfig()">Generate Updated Config</button>
+                <button type="button" class="btn btn-primary" onclick="loadCurrentConfig()">Load Current Config</button>
+                <button type="button" class="btn btn-secondary" onclick="resetForm()">Reset Form</button>
+            </div>
+        </form>
+
+        <!-- Output Section -->
+        <div id="output-section" style="display: none; margin-top: 30px;">
+            <h2>Generated Configuration</h2>
+            <div class="alert alert-success">
+                Configuration generated successfully! Copy the code below and paste it into your <code>config.json</code> file.
+            </div>
+            <div class="form-group">
+                <textarea id="config-output" readonly style="font-family: monospace; min-height: 300px;"></textarea>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="copyToClipboard()">Copy to Clipboard</button>
+        </div>
+    </div>
+
+    <script>
+        let serviceCounter = 0;
+        let productCounter = 0;
+
+        // Initialize with default values
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCurrentConfig();
+        });
+
+        async function loadCurrentConfig() {
+            try {
+                const response = await fetch('config.json');
+                const config = await response.json();
+                populateForm(config);
+            } catch (error) {
+                console.log('Loading default configuration');
+                populateForm(getDefaultConfig());
+            }
+        }
+
+        function getDefaultConfig() {
+            return {
+                businessName: "Reading Specialist",
+                contactEmail: "your-email@example.com",
+                hero: {
+                    title: "Transform Reading Struggles into Success",
+                    subtitle: "Expert literacy tutoring based on the Science of Reading"
+                },
+                about: {
+                    text: "I'm a dedicated reading specialist with expertise in helping beginning and struggling readers. My teaching methods align with the latest Science of Reading research, ensuring evidence-based instruction that produces real results.",
+                    imageUrl: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600"
+                },
+                services: [
+                    { icon: "📚", title: "One-on-One Tutoring", description: "Personalized instruction tailored to your child's specific needs and learning style." },
+                    { icon: "🎯", title: "Assessment & Planning", description: "Comprehensive reading assessments to identify strengths and create targeted learning plans." },
+                    { icon: "✏️", title: "Writing Instruction", description: "Evidence-based writing instruction that builds composition skills alongside reading." },
+                    { icon: "👥", title: "Parent Coaching", description: "Guidance and strategies for parents to support reading development at home." }
+                ],
+                products: [
+                    { title: "Phonics Activity Pack", description: "Complete set of systematic phonics activities aligned with Science of Reading principles.", price: "$29.99", imageUrl: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400", purchaseUrl: "https://gumroad.com/your-product-link" },
+                    { title: "Decodable Reader Set", description: "Carefully sequenced decodable books for beginning readers.", price: "$39.99", imageUrl: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400", purchaseUrl: "https://gumroad.com/your-product-link" },
+                    { title: "Reading Assessment Kit", description: "Professional assessment tools for tracking reading progress.", price: "$49.99", imageUrl: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400", purchaseUrl: "https://gumroad.com/your-product-link" }
+                ]
+            };
+        }
+
+        function populateForm(config) {
+            document.getElementById('businessName').value = config.businessName || '';
+            document.getElementById('contactEmail').value = config.contactEmail || '';
+            document.getElementById('heroTitle').value = config.hero?.title || '';
+            document.getElementById('heroSubtitle').value = config.hero?.subtitle || '';
+            document.getElementById('aboutText').value = config.about?.text || '';
+            document.getElementById('aboutImageUrl').value = config.about?.imageUrl || '';
+
+            // Clear and populate services
+            document.getElementById('services-container').innerHTML = '';
+            serviceCounter = 0;
+            if (config.services) {
+                config.services.forEach(service => {
+                    addService(service);
+                });
+            }
+
+            // Clear and populate products
+            document.getElementById('products-container').innerHTML = '';
+            productCounter = 0;
+            if (config.products) {
+                config.products.forEach(product => {
+                    addProduct(product);
+                });
+            }
+        }
+
+        function addService(service = null) {
+            const container = document.getElementById('services-container');
+            const id = serviceCounter++;
+            const div = document.createElement('div');
+            div.className = 'card';
+            div.id = `service-${id}`;
+            div.innerHTML = `
+                <h3>Service ${id + 1}</h3>
+                <div class="form-group">
+                    <label>Icon (emoji)</label>
+                    <input type="text" class="service-icon" value="${service?.icon || '📚'}" maxlength="2">
+                    <p class="help-text">Use an emoji: 📚 🎯 ✏️ 👥 📖 🌟 etc.</p>
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="service-title" value="${service?.title || ''}" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="service-description" required>${service?.description || ''}</textarea>
+                </div>
+                <button type="button" class="btn btn-danger" onclick="removeService(${id})">Remove Service</button>
+            `;
+            container.appendChild(div);
+        }
+
+        function removeService(id) {
+            document.getElementById(`service-${id}`).remove();
+        }
+
+        function addProduct(product = null) {
+            const container = document.getElementById('products-container');
+            const id = productCounter++;
+            const div = document.createElement('div');
+            div.className = 'card';
+            div.id = `product-${id}`;
+            div.innerHTML = `
+                <h3>Product ${id + 1}</h3>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="product-title" value="${product?.title || ''}" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="product-description" required>${product?.description || ''}</textarea>
+                </div>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input type="text" class="product-price" value="${product?.price || '$0.00'}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Purchase URL</label>
+                        <input type="url" class="product-url" value="${product?.purchaseUrl || ''}" required>
+                        <p class="help-text">Gumroad, Teachable, etc.</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Image URL</label>
+                    <input type="url" class="product-image" value="${product?.imageUrl || ''}">
+                </div>
+                <button type="button" class="btn btn-danger" onclick="removeProduct(${id})">Remove Product</button>
+            `;
+            container.appendChild(div);
+        }
+
+        function removeProduct(id) {
+            document.getElementById(`product-${id}`).remove();
+        }
+
+        function generateConfig() {
+            const config = {
+                businessName: document.getElementById('businessName').value,
+                contactEmail: document.getElementById('contactEmail').value,
+                hero: {
+                    title: document.getElementById('heroTitle').value,
+                    subtitle: document.getElementById('heroSubtitle').value
+                },
+                about: {
+                    text: document.getElementById('aboutText').value,
+                    imageUrl: document.getElementById('aboutImageUrl').value
+                },
+                services: [],
+                products: []
+            };
+
+            // Collect services
+            document.querySelectorAll('#services-container .card').forEach(card => {
+                config.services.push({
+                    icon: card.querySelector('.service-icon').value,
+                    title: card.querySelector('.service-title').value,
+                    description: card.querySelector('.service-description').value
+                });
+            });
+
+            // Collect products
+            document.querySelectorAll('#products-container .card').forEach(card => {
+                config.products.push({
+                    title: card.querySelector('.product-title').value,
+                    description: card.querySelector('.product-description').value,
+                    price: card.querySelector('.product-price').value,
+                    imageUrl: card.querySelector('.product-image').value,
+                    purchaseUrl: card.querySelector('.product-url').value
+                });
+            });
+
+            const output = JSON.stringify(config, null, 2);
+            document.getElementById('config-output').value = output;
+            document.getElementById('output-section').style.display = 'block';
+            document.getElementById('output-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copyToClipboard() {
+            const output = document.getElementById('config-output');
+            output.select();
+            document.execCommand('copy');
+            alert('Configuration copied to clipboard!');
+        }
+
+        function resetForm() {
+            if (confirm('Are you sure you want to reset the form? This will reload the current configuration.')) {
+                loadCurrentConfig();
+                document.getElementById('output-section').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
